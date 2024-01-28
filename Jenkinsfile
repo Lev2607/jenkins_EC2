@@ -28,8 +28,8 @@ pipeline {
 
     post {
         always {
-            sh '''sleep 2m
-            terraform destroy -auto-approve'''
+           // sh '''sleep 2m
+            //terraform destroy -auto-approve'''
         }
     }
 }
