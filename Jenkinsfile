@@ -1,7 +1,7 @@
 pipeline {
     agent {
         label 'EC2-agent'
-        }
+    }
 
     stages {
         stage('Pull') {
@@ -28,8 +28,13 @@ pipeline {
 
     post {
         always {
-           // sh '''sleep 2m
-            //terraform destroy -auto-approve'''
+            sh 'terraform destroy -auto-approve'
+        }
+        success {
+            echo 'Der Terraform-Apply-Befehl wurde erfolgreich ausgeführt.'
+        }
+        failure {
+            echo 'Es gab einen Fehler beim Ausführen des Terraform-Apply-Befehls.'
         }
     }
 }
